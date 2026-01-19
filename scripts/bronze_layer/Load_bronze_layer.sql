@@ -1,3 +1,25 @@
+/*
+===============================================================================
+Stored Procedure: bronze.load_bronze
+===============================================================================
+Purpose:
+    Loads raw data into the Bronze layer tables using BULK INSERT.
+    This procedure truncates existing data and reloads fresh data
+    from CRM and ERP source CSV files.
+
+    The Bronze layer represents the raw landing zone with no
+    transformations applied.
+
+Features:
+    - Batch execution logging using PRINT statements
+    - Load duration tracking per table
+    - Error handling using TRY...CATCH
+    - Full refresh strategy (TRUNCATE + LOAD)
+
+Usage:
+    EXEC bronze.load_bronze;
+===============================================================================
+*/
 CREATE OR ALTER PROCEDURE bronze.load_bronze AS
 BEGIN
 	DECLARE @start_time DATETIME, @end_time DATETIME, @batch_start_time DATETIME, @batch_end_time DATETIME; 
@@ -121,4 +143,5 @@ BEGIN
 		PRINT '=========================================='
 	END CATCH
 END
+
 
