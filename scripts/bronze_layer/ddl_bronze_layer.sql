@@ -1,3 +1,21 @@
+/*
+===============================================================================
+DDL Script: Create Bronze Layer Tables
+===============================================================================
+Purpose:
+    This script creates raw (Bronze layer) tables used for ingesting data
+    directly from source systems such as CRM and ERP.
+
+    The Bronze layer stores data in its original structure with minimal or
+    no transformation. These tables act as the landing zone for further
+    processing into Silver and Gold layers.
+
+Usage:
+    - Execute once during initial environment setup
+    - Tables will be populated by ETL/ELT processes
+===============================================================================
+*/
+
 IF OBJECT_ID('bronze.crm_cust_info', 'U') IS NOT NULL
     DROP TABLE bronze.crm_cust_info;
 GO
